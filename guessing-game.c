@@ -42,10 +42,12 @@ main(void)
 	print_header();                  /* It print the header */
 	guess = get_number();            /* It gets the guess of the user */
 
-	if (guess == secret_number)
-		printf("You guessed right!\n");
+	if (guess > secret_number)
+		printf("You guess was higher than the secret number. Try again!\n");
+	else if (guess < secret_number)
+		printf("You guess was lower than the secret number. Try again!\n");
 	else
-		printf("You guessed wrong. Try again!\n");
+		printf("You guessed right!\n");
 
 	return 0;
 }
