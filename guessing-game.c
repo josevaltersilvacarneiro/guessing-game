@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define NUMBER_OF_TRIES 10
+
 int
 random(void)
 {
@@ -42,7 +44,7 @@ main(void)
 
 	print_header();                  /* It print the header */
 
-	for (register int i = 0, hit = 0; i < 10 && !hit; i++)
+	for (register int i = 0, hit = 0; i < NUMBER_OF_TRIES && !hit; i++)
 	{
 		guess = get_number();            /* It gets the guess of the user */
 
