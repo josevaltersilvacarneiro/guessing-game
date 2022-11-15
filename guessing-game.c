@@ -38,16 +38,24 @@ main(void)
 	
 	int secret_number = random();
 	int guess;
+	int hit;
 
 	print_header();                  /* It print the header */
-	guess = get_number();            /* It gets the guess of the user */
 
-	if (guess > secret_number)
-		printf("You guess was higher than the secret number. Try again!\n");
-	else if (guess < secret_number)
-		printf("You guess was lower than the secret number. Try again!\n");
-	else
-		printf("You guessed right!\n");
+	for (register int i = 0, hit = 0; i < 10 && !hit; i++)
+	{
+		guess = get_number();            /* It gets the guess of the user */
+
+		if (guess > secret_number)
+			printf("You guess was higher than the secret number. Try again!\n");
+		else if (guess < secret_number)
+			printf("You guess was lower than the secret number. Try again!\n");
+		else
+		{
+			printf("You tried %d times to get it right!\n", ++i);
+			hit = 1;
+		}
+	}
 
 	return 0;
 }
