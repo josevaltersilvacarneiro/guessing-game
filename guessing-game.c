@@ -42,17 +42,22 @@ main(void)
 	int guess;
 	int hit;
 
-	print_header();                  /* It print the header */
+	print_header();               /* It print the header */
 
 	for (register int i = 0, hit = 0; i < NUMBER_OF_TRIES && !hit; i++)
 	{
 		guess = get_number();            /* It gets the guess of the user */
 
-		if (guess > secret_number)
+		if (guess < 0)
+		{
+			i--;
+			continue; 		 /* Negative numbers aren't allowed */
+		}
+		else if (guess > secret_number)
 			printf("You guess was higher than the secret number. Try again!\n");
 		else if (guess < secret_number)
 			printf("You guess was lower than the secret number. Try again!\n");
-		else
+		else if (guess == secret_number)
 		{
 			printf("You tried %d times to get it right!\n", ++i);
 			hit = 1;
