@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #define NUMBER_OF_TRIES 10
+#define MAX_SCORE 1000
 
 int
 random(void)
@@ -38,9 +39,10 @@ main(void)
 {
 	// Variables
 	
-	int secret_number = random();
+	float score = MAX_SCORE;
 	int guess;
 	int hit;
+	int secret_number = random();
 
 	print_header();               /* It print the header */
 
@@ -62,7 +64,11 @@ main(void)
 			printf("You tried %d times to get it right!\n", ++i);
 			hit = 1;
 		}
+
+		score -= (float) (guess - secret_number) / 2;
 	}
+
+	printf("Score: %.2f\n", score);             /* Print the score on default output */
 
 	return 0;
 }
