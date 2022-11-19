@@ -46,7 +46,7 @@ main(void)
 
 	print_header();               /* It print the header */
 
-	for (register int i = 0, hit = 0; i < NUMBER_OF_TRIES && !hit; i++)
+	for (register short i = 0, hit = 0; i < NUMBER_OF_TRIES && !hit; i++)
 	{
 		guess = get_number();            /* It gets the guess of the user */
 
@@ -68,7 +68,7 @@ main(void)
 		score -= (float) (guess - secret_number) / 2;
 	}
 
-	printf("Score: %.2f\n", score);             /* Print the score on default output */
+	printf("Score: %.1f\n", score);             /* Print the score on default output */
 
 	return 0;
 }
