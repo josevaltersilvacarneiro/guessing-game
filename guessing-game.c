@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define NUMBER_OF_TRIES 10
 #define MAX_SCORE 1000
 
 int
-rand(void)
+randm(void)
 {
 	// The computer returns a random number
 	
-	int rand = 5;
+	int seconds = time(0);               /* It get the second current since 1th january 1970 */
+	srandom(seconds);                    /* It changes the seed */
+
+	int rand = random() % 10;            /* It calculates the new random number */
 
 	return rand;
 }
@@ -43,7 +47,7 @@ main(void)
 	float score = MAX_SCORE;
 	int guess;
 	int hit;
-	int secret_number = rand();
+	int secret_number = randm();
 
 	print_header();               /* It print the header */
 
