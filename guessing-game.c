@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define NUMBER_OF_TRIES 10
 #define MAX_SCORE 1000
 
 int
-random(void)
+rand(void)
 {
 	// The computer returns a random number
 	
@@ -42,7 +43,7 @@ main(void)
 	float score = MAX_SCORE;
 	int guess;
 	int hit;
-	int secret_number = random();
+	int secret_number = rand();
 
 	print_header();               /* It print the header */
 
@@ -65,7 +66,7 @@ main(void)
 			hit = 1;
 		}
 
-		score -= (float) (guess - secret_number) / 2;
+		score -= (float) abs(guess - secret_number) / 2;
 	}
 
 	printf("Score: %.1f\n", score);             /* Print the score on default output */
