@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define INTERVAL 10
 #define NUMBER_OF_TRIES 10
 #define MAX_SCORE 1000
 
@@ -13,7 +14,7 @@ randm(void)
 	int seconds = time(0);               /* It get the second current since 1th january 1970 */
 	srandom(seconds);                    /* It changes the seed */
 
-	int rand = random() % 10;            /* It calculates the new random number */
+	int rand = random();                 /* It calculates the new random number */
 
 	return rand;
 }
@@ -45,13 +46,20 @@ main(void)
 	// Variables
 	
 	float score = MAX_SCORE;
+	int number_of_tries = NUMBER_OF_TRIES;
 	int guess;
 	int hit;
-	int secret_number = randm();
+	int secret_number = randm() % INTERVAL;
+	int level;
 
-	print_header();               /* It print the header */
+	printf("Type the difficulty level: ");
+	scanf("%d", &level);
 
-	for (register short i = 0, hit = 0; i < NUMBER_OF_TRIES && !hit; i++)
+	number_of_tries /= level % INTERVAL + 1;
+
+	print_header();                          /* It print the header */
+
+	for (register short i = 0, hit = 0; i < number_of_tries && !hit; i++)
 	{
 		guess = get_number();            /* It gets the guess of the user */
 
@@ -73,7 +81,7 @@ main(void)
 		score -= (float) abs(guess - secret_number) / 2;
 	}
 
-	printf("Score: %.1f\n", score);             /* Print the score on default output */
+	printf("Score: %.1f\n", score);          /* Print the score on default output */
 
 	return 0;
 }
