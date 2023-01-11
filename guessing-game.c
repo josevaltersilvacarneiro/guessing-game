@@ -6,17 +6,22 @@
 #define NUMBER_OF_TRIES 10
 #define MAX_SCORE 1000
 
+int randm(void);
+void print_header(void);
+int get_number(void);
+int main(void);
+
 int
 randm(void)
 {
 	// The computer returns a random number
 	
 	int seconds = time(0);               /* It get the second current since 1th january 1970 */
-	srandom(seconds);                    /* It changes the seed */
+	srand(seconds);                    /* It changes the seed */
 
-	int rand = random();                 /* It calculates the new random number */
+	int randm = rand();                 /* It calculates the new random number */
 
-	return rand;
+	return randm;
 }
 
 void
