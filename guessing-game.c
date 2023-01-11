@@ -49,7 +49,7 @@ main(void)
 	int number_of_tries = NUMBER_OF_TRIES;
 	int guess;
 	int hit;
-	int secret_number = randm() % INTERVAL;
+	int magic = randm() % INTERVAL;
 	int level;
 
 	printf("Type the difficulty level: ");
@@ -68,17 +68,17 @@ main(void)
 			i--;
 			continue; 		 /* Negative numbers aren't allowed */
 		}
-		else if (guess > secret_number)
+		else if (guess > magic)
 			printf("You guess was higher than the secret number. Try again!\n");
-		else if (guess < secret_number)
+		else if (guess < magic)
 			printf("You guess was lower than the secret number. Try again!\n");
-		else if (guess == secret_number)
+		else if (guess == magic)
 		{
 			printf("You tried %d times to get it right!\n", ++i);
 			hit = 1;
 		}
 
-		score -= (float) abs(guess - secret_number) / 2;
+		score -= (float) abs(guess - magic) / 2;
 	}
 
 	printf("Score: %.1f\n", score);          /* Print the score on default output */
